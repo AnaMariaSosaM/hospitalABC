@@ -1,6 +1,5 @@
 var patientsA, patientsB, isPatientA, isPatientB;
-
-
+//patients
 jQuery.ajax({
 	url: '/api/patients',
 	type: 'get',
@@ -9,8 +8,7 @@ jQuery.ajax({
 		patientsA = data.patients.patient;
 	}
 });
-
-
+//patients1
 jQuery.ajax({
 	url: '/api/patients2',
 	type: 'get',
@@ -118,17 +116,19 @@ function recorrer (a,b) {
 }
 function comun () {
 	$('.enComun').removeClass('hidden')
+	$('.listaEnComun').text('')
 	var patientsInA = [];
 	var patientsInB = [];
 	recorrer(patientsInA, patientsInB);
 	patientInBoth = _.intersection(patientsInA, patientsInB);
 	for (var i = 0; i < patientInBoth.length; i++) {
 		$('.listaEnComun').append(patientInBoth[i] + "<br>") ;
-	}
-	
+	}	
 }
 function soloUno () {
-	$('.diferente').removeClass('hidden')
+	$('.listaDiferentes').text('');
+	$('.diferente').removeClass('hidden');
+	
 	var patientsInA = [];
 	var patientsInB = [];
 	recorrer(patientsInA, patientsInB);
@@ -138,9 +138,8 @@ function soloUno () {
 		$('.listaDiferentes').append(patientInOne[i] + "<br>") ;
 	}
 }
-jQuery(document).ready(function($) {
+$(document).ready(function($) {
 	$('.tablePatients').addClass('hidden')
 	$('.enComun').addClass('hidden')
 	$('.diferente').addClass('hidden')
-
 });
