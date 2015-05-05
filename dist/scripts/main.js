@@ -196,6 +196,12 @@ function clearTable (argument) {
   showUserInTable(schemaClear());
 }
 
+function borrarAfn () {
+  $.post('/delete/',{ name: $('.nombre').val() }, function (data) {
+    console.log(data);
+  })
+}
+
 $(document).ready(function($) {
   var $input = $(".nombre");
   $('.tablePatients').addClass('hidden');
@@ -213,4 +219,5 @@ $(document).ready(function($) {
   $('.comparar').on('click', comparar);
   $('.comun').on('click', comun);
   $('.soloUno').on('click', soloUno);
+  $('.borrarA').on('click', borrarAfn)
 });
