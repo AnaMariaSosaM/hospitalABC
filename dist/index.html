@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HospitalABC</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body>
+    <section>
+      <h1>Hospital ABC</h1>
+      <div class="form-group">
+          <label for="exampleInputName2">Patient Name:</label>
+          <input type="text" class="form-control nombre" id="exampleInputName2" placeholder="John Doe">
+      </div>
+      <ul class="col-md-6">
+        <li>
+          <button type="submit" class="btn btn-info buscarA">Search in accounting</button>
+        </li>
+        <li>
+          <button type="submit" class="btn btn-info comparar">Compare</button>
+        </li>
+        <li>
+          <button type="submit" class="btn btn-info soloUno">List in one</button>
+        </li>
+        <li>
+          <button type="submit" class="btn btn-info borrarA">Delete in accounting</button>
+        </li>
+        <li>
+          <button type="submit" class="btn btn-info actualizarContabilidad">Update a patient info in accounting</button>
+        </li>
+      </ul>
+      <ul class="col-md-6">
+        <li>
+          <button type="submit" class="btn btn-info buscarB">Search in appointments</button>
+        </li>
+        <li>
+          <button type="submit" class="btn btn-info copiarInfo">Copy Patient Info</button>
+        </li>
+        <li>
+          <button type="submit" class="btn btn-info comun">List in both</button>
+        </li>
+        <li>
+          <button type="submit" class="btn btn-info borrarB">Delete in appointments</button>
+        </li>
+        <li>
+          <button type="submit" class="btn btn-info actualizarCitas">Update a patient info in appointments</button>
+        </li>
+      </ul>
+      <table class="tablePatients table ">
+        <tr>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Social Security</th>
+          <th>Date of birth</th>
+          <th>Address</th>
+          <th>Zip code</th>
+          <th>City</th>
+          <th>State</th>
+        </tr>
+        <tr>
+          <td class="name"></td>
+          <td class="gender"></td>
+          <td class="ssn"></td>
+          <td class="date_of_birth"></td>
+          <td class="address"></td>
+          <td class="zip_code"></td>
+          <td class="city"></td>
+          <td class="state"></td>
+        </tr>
+      </table>
+      <div class="enComun">
+        <h3>In Both</h3>
+        <p class="listaEnComun"></p>
+      </div>
+      <div class="diferente">
+        <h3>In One</h3>
+        <p class="listaDiferentes"></p>
+      </div>
+    </section>
+    <script src="components/jquery/dist/jquery.min.js"></script>
+    <script src="scripts/underscore.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
