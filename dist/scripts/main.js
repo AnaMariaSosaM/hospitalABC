@@ -196,8 +196,8 @@ function clearTable (argument) {
   showUserInTable(schemaClear());
 }
 
-function borrarAfn () {
-  $.post('/delete/',{ name: $('.nombre').val() }, function (data) {
+function borrarAfn (userToDelete) {
+  $.post('/delete/' + $('.nombre').val(), function (data) {
     console.log(data);
   })
 }
@@ -220,4 +220,16 @@ $(document).ready(function($) {
   $('.comun').on('click', comun);
   $('.soloUno').on('click', soloUno);
   $('.borrarA').on('click', borrarAfn)
+  $('.actualizarContabilidad').on('click', updateUserInA)
 });
+
+function updateUserInA () {
+  /*
+  - desocultar el form con la tabla con inputs
+  - poner en los input la info del usuario
+  - escuchar el boton guardar
+  - recorrer patientsA para ver si patient Name si existe
+  - enviar esos campos en un objeto por el post a /updateA/
+  - avisar que el guardado fue exitoso desde el POST
+  */
+}

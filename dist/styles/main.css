@@ -1,6 +1,4 @@
 body{
-	margin: 0 15%;
-	text-align: center;
 }
 
 h1,h3{
@@ -8,7 +6,7 @@ h1,h3{
 }
 ul{
 	list-style: none;
-	
+
 }
 ul li{
 	margin: 15px 0;

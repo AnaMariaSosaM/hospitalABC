@@ -4,17 +4,45 @@
     <title>HospitalABC</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
-    <section>
+    <section class="container">
       <h1>Hospital ABC</h1>
       <div class="form-group">
           <label for="exampleInputName2">Patient Name:</label>
           <input type="text" class="form-control nombre" id="exampleInputName2" placeholder="John Doe" value="John Doe">
       </div>
-      <ul class="col-md-6">
+      <form action="POST" class="hidden">
+
+      <table class="table ">
+        <tr>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Social Security</th>
+          <th>Date of birth</th>
+          <th>Address</th>
+          <th>Zip code</th>
+          <th>City</th>
+          <th>State</th>
+        </tr>
+        <tr>
+          <td><input type="text" class="form-control nameInput" name="nameInput" ></td>
+          <td><input type="text" class="form-control genderInput" name="genderInput" ></td>
+          <td><input type="text" class="form-control ssnInput" name="ssnInput" ></td>
+          <td><input type="text" class="form-control date_of_birthInput" name="date_of_birthInput" ></td>
+          <td><input type="text" class="form-control addressInput" name="addressInput" ></td>
+          <td><input type="text" class="form-control zip_codeInput" name="zip_codeInput" ></td>
+          <td><input type="text" class="form-control cityInput" name="cityInput" ></td>
+          <td><input type="text" class="form-control stateInput" name="stateInput" ></td>
+        </tr>
+        <tr>
+          <td colspan="8"><input type="submit" value="Save" class="btn btn-success"></td>
+        </tr>
+      </table>
+      </form>
+      <ul class="col-md-6 text-center">
         <li>
           <button type="submit" class="btn btn-info buscarA">Search in accounting</button>
         </li>
@@ -31,7 +59,7 @@
           <button type="submit" class="btn btn-info actualizarContabilidad">Update a patient info in accounting</button>
         </li>
       </ul>
-      <ul class="col-md-6">
+      <ul class="col-md-6 text-center">
         <li>
           <button type="submit" class="btn btn-info buscarB">Search in appointments</button>
         </li>
@@ -79,6 +107,7 @@
         <p class="listaDiferentes"></p>
       </div>
     </section>
+
     <script src="components/jquery/dist/jquery.min.js"></script>
     <script src="scripts/underscore.js"></script>
     <script src="scripts/main.js"></script>
