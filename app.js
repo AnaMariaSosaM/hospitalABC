@@ -15,7 +15,7 @@ var patientsA;
 var patientsB;
 
 // parser body response
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser')
 
 function returnUsers (user, patientsArray) {
 	var returnArray = [];
