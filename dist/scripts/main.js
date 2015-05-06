@@ -219,13 +219,14 @@ $(document).ready(function($) {
   $('.comparar').on('click', comparar);
   $('.comun').on('click', comun);
   $('.soloUno').on('click', soloUno);
-  $('.borrarA').on('click', borrarAfn)
+  $('.borrarA').on('click', borrarAfn);
+
   $('.actualizarContabilidad').on('click', updateUserInA)
 });
 
 function updateUserInA () {
   /*
-  - desocultar el form con la tabla con inputs
+  - desocultar el form con la tabla con inputs  
   - poner en los input la info del usuario
   - escuchar el boton guardar
   - recorrer patientsA para ver si patient Name si existe
