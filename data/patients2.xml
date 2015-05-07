@@ -1,50 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <hospital>
-	<city>Orlando</city>
-	<name>Orlando General Hospital</name>
-	<physician>
-		<name>Eric Moore</name>
-		<patient>
-			<first_name>John</first_name>
-			<middle_initial></middle_initial>
-			<last_name>Doe</last_name>
-			<dob>03/05/1957</dob>
-			<social_security>123456</social_security>
-			<address>1223 abc street, new york city, NY 12345</address>
-		</patient>
-		<patient>
-			<first_name>Diana</first_name>
-			<middle_initial>J</middle_initial>
-			<last_name>Shell</last_name>
-			<dob>01/12/1976</dob>
-			<social_security>456548</social_security>
-			<address>12 25th av, orlando, FL 47857</address>
-		</patient>
-	</physician>
-	<physician>
-		<name>Ann Bloom</name>
-		<patient>
-			<first_name>Sara</first_name>
-			<middle_initial></middle_initial>
-			<last_name>Smith</last_name>
-			<dob>05/12/1942</dob>
-			<social_security>111111</social_security>
-			<address>123 palmeto rd, los Angeles, CA 13245</address>
-		</patient>
-		<patient>
-			<first_name>William</first_name>
-			<middle_initial>J</middle_initial>
-			<last_name>Oconnel</last_name>
-			<dob>01/27/1946</dob>
-			<social_security>22222</social_security>
-			<address>57s adaq blv, dallas, TX 54741</address>
-		</patient>
-		<patient>
-			<first_name>Jack</first_name>
-			<middle_initial></middle_initial>
-			<last_name>Johnson</last_name>
-			<dob>09/12/1969</dob>
-			<social_security>33333</social_security>
-			<address>999 abc blv, fairview, NJ 07425</address>
-		</patient>
-	</physician>
+  <city>Orlando</city>
+  <name>Orlando General Hospital</name>
+  <physician>
+    <name>Eric Moore</name>
+    <patient>
+      <first_name>John</first_name>
+      <middle_initial/>
+      <last_name>Doe</last_name>
+      <dob>03/05/1957</dob>
+      <social_security>123456</social_security>
+      <address>1223 abc street, new york city, NY 12345</address>
+    </patient>
+    <patient>
+      <first_name>Diana</first_name>
+      <middle_initial>J</middle_initial>
+      <last_name>Shell</last_name>
+      <dob>01/12/1976</dob>
+      <social_security>456548</social_security>
+      <address>12 25th av, orlando, FL 47857</address>
+    </patient>
+  </physician>
+  <physician>
+    <name>Ann Bloom</name>
+    <patient>
+      <first_name>Sara</first_name>
+      <middle_initial/>
+      <last_name>Smith</last_name>
+      <dob>05/12/1942</dob>
+      <social_security>111111</social_security>
+      <address>123 palmeto rd, los Angeles, CA 13245</address>
+    </patient>
+    <patient>
+      <first_name>William</first_name>
+      <middle_initial>J</middle_initial>
+      <last_name>Oconnel</last_name>
+      <dob>01/27/1946</dob>
+      <social_security>22222</social_security>
+      <address>57s adaq blv, dallas, TX 54741</address>
+    </patient>
+    <patient>
+      <first_name>Jack</first_name>
+      <middle_initial/>
+      <last_name>Johnson</last_name>
+      <dob>09/12/1969</dob>
+      <social_security>33333</social_security>
+      <address>999 abc blv, fairview, NJ 07425</address>
+    </patient>
+  </physician>
 </hospital>

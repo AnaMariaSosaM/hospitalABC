@@ -14,7 +14,7 @@
           <label for="exampleInputName2">Patient Name:</label>
           <input type="text" class="form-control nombre" id="exampleInputName2" placeholder="John Doe" value="John Doe">
       </div>
-      <form action="POST" class="hidden">
+      <form action="POST" class="hidden updateForm">
         <div class="table-responsive">
           <table class="table ">
           <tr>
@@ -38,11 +38,12 @@
             <td><input type="text" class="form-control stateInput" name="stateInput" ></td>
           </tr>
           <tr>
-            <td colspan="8"><input type="submit" value="Save" class="btn btn-success"></td>
+            <td colspan="8"><input type="submit" value="Save" class="btn btn-success save"></td>
           </tr>
           </table>
         </div>
       </form>
+    
       <ul class="col-md-6 text-center">
         <li>
           <button type="submit" class="btn btn-info buscarA">Search in accounting</button>
@@ -77,7 +78,7 @@
           <button type="submit" class="btn btn-info actualizarCitas">Update a patient info in appointments</button>
         </li>
       </ul>
-      <div class="table-responsive">
+      <div class="table-responsive col-md-12">
         <table class="tablePatients table ">
           <tr>
             <th>Name</th>

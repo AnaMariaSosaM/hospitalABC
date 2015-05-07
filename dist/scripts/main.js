@@ -92,11 +92,11 @@ function showUserInTable (user) {
 function buscarAfn () {
 
   var user = foundUser(patientsA, $('.nombre').val(), schemaA);
-
+  
   if (user) {
     showUserInTable(user);
   }else{
-    console.log('La persona que busca no se encuentra en la lista de contabilidad')
+    alert('La persona que busca no se encuentra en la lista de contabilidad')
   }
 }
 
@@ -106,7 +106,8 @@ function buscarBfn () {
   if (user) {
     showUserInTable(user);
   }else{
-    console.log('La persona que busca no se encuentra en la lista de citas')
+    alert('La persona que busca no se encuentra en la lista de citas')
+    
   }
 }
 
@@ -193,12 +194,19 @@ function soloUno () {
 }
 
 function clearTable (argument) {
+
   showUserInTable(schemaClear());
 }
 
 function borrarAfn (userToDelete) {
   $.post('/delete/' + $('.nombre').val(), function (data) {
-    console.log(data);
+    alert(data);
+  });
+}
+
+function borrarBfn (userToDelete) {
+  $.post('/deleteB/' + $('.nombre').val(), function (data) {
+    alert(data);
   })
 }
 
@@ -220,11 +228,35 @@ $(document).ready(function($) {
   $('.comun').on('click', comun);
   $('.soloUno').on('click', soloUno);
   $('.borrarA').on('click', borrarAfn);
+  $('.borrarB').on('click', borrarBfn);
 
-  $('.actualizarContabilidad').on('click', updateUserInA)
+  $('.actualizarContabilidad').on('click', updateUserInA);
+  $('.save').on('click', updateXml);
+
 });
-
+function showUserinForm (user) {
+    $('.nameInput').val(user.name);
+    $('.genderInput').val(user.gender);
+    $('.ssnInput').val(user.ssn);
+    $('.date_of_birthInput').val(user.dob);
+    $('.addressInput').val(user.address);
+    $('.zip_codeInput').val(user.zip_code);
+    $('.cityInput').val(user.city);
+    $('.stateInput').val(user.state);
+  
+}
 function updateUserInA () {
+  
+  var user = foundUser(patientsA, $('.nombre').val(), schemaA);
+  if (user) {
+
+    $('.updateForm').removeClass('hidden');
+    showUserinForm(user);
+  }else{
+
+   alert("This patient is not in the xml file");
+
+  }
   /*
   - desocultar el form con la tabla con inputs  
   - poner en los input la info del usuario
@@ -233,4 +265,9 @@ function updateUserInA () {
   - enviar esos campos en un objeto por el post a /updateA/
   - avisar que el guardado fue exitoso desde el POST
   */
+}
+function updateXml (userToUpdate) {
+  $.post('/updateA/' + $('.nombre').val(), function (data) {
+    alert(data);
+  });
 }
