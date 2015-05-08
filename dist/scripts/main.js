@@ -51,6 +51,8 @@ function schemaA (val){
 
 function schemaB (val) {
   return {
+    first_name : val.first_name,
+    last_name : val.last_name,
     name: val.first_name + " " + val.last_name,
     ssn: val.social_security,
     dob: val.dob,
@@ -198,14 +200,14 @@ function clearTable (argument) {
   showUserInTable(schemaClear());
 }
 
-function borrarAfn (userToDelete) {
-  $.post('/delete/' + $('.nombre').val(), function (data) {
-    alert(data);
-  });
+
+function doctorInfo (argument) {
+  $('.doctor').removeClass('hidden');
 }
 
-function borrarBfn (userToDelete) {
-  $.post('/deleteB/' + $('.nombre').val(), function (data) {
+function borrarBfn (userToDelete, doctor) {
+
+  $.post('/deleteB/' + $('.nombre').val() + '/' + $('.doctorName').val() ,function (data) {
     alert(data);
   })
 }
@@ -228,10 +230,14 @@ $(document).ready(function($) {
   $('.comun').on('click', comun);
   $('.soloUno').on('click', soloUno);
   $('.borrarA').on('click', borrarAfn);
+  $('.inputDoctor').on('click', doctorInfo);
   $('.borrarB').on('click', borrarBfn);
 
   $('.actualizarContabilidad').on('click', updateUserInA);
-  $('.save').on('click', updateXml);
+  $('.actualizarCitas').on('click', updateUserInB);
+  $('.updateA').on('click', updateXml);
+  $('.updateB').on('click', updateXml2);
+  $('.copiarInfo').on('click', copiarfn);
 
 });
 function showUserinForm (user) {
@@ -245,29 +251,88 @@ function showUserinForm (user) {
     $('.stateInput').val(user.state);
   
 }
-function updateUserInA () {
+
+function showUserBinForm (user) {
+
+    $('.first_nameInput').val(user.first_name);
+    $('.last_nameInput').val(user.last_name);
+    $('.dobInput').val(user.dob);
+    $('.social_securityInput').val(user.ssn);
+    $('.addressInput').val(user.address);
   
+}
+
+function updateUserInA () {
   var user = foundUser(patientsA, $('.nombre').val(), schemaA);
   if (user) {
 
-    $('.updateForm').removeClass('hidden');
+    $('.updateFormA').removeClass('hidden');
     showUserinForm(user);
   }else{
 
    alert("This patient is not in the xml file");
 
   }
-  /*
-  - desocultar el form con la tabla con inputs  
-  - poner en los input la info del usuario
-  - escuchar el boton guardar
-  - recorrer patientsA para ver si patient Name si existe
-  - enviar esos campos en un objeto por el post a /updateA/
-  - avisar que el guardado fue exitoso desde el POST
-  */
 }
-function updateXml (userToUpdate) {
-  $.post('/updateA/' + $('.nombre').val(), function (data) {
+
+
+function updateUserInB () {
+  var user = foundUser(patientsB, $('.nombre').val(), schemaB);
+  if (user) {
+
+    $('.updateFormB').removeClass('hidden');
+    showUserBinForm(user);
+  }else{
+
+   alert("This patient is not in the xml file");
+
+  }
+}
+
+function borrarAfn (userToDelete) {
+  $.post('/delete/' + $('.nombre').val(), function (data) {
     alert(data);
   });
+}
+function updateXml (event) {
+  event.preventDefault();
+  console.log($('#updateFields').serialize());
+  $.post('/updateA/' + $('.nombre').val(), $('#updateFields').serialize(), function (data) {
+    alert(data);
+  });
+  $('.updateFormA').addClass('hidden');
+  $('.nombre').val('');
+  location.reload(true);
+}
+function updateXml2 (event) {
+  event.preventDefault();
+  console.log($('#updateFieldsB').serialize());
+  $.post('/updateB/' + $('.nombre').val(), $('#updateFieldsB').serialize(), function (data) {
+    alert(data);
+  });
+  $('.updateFormB').addClass('hidden');
+  $('.nombre').val('');
+  location.reload(true);
+}
+
+
+
+function copiarfn () {
+  var userB = foundUser(patientsB, $('.nombre').val(), schemaB);
+  var userA = foundUser(patientsA, $('.nombre').val(), schemaA);
+  
+  
+  if (userB && !userA) {
+    showUserBinForm(userB);
+    $.post('/copyB/' + $('.nombre').val(), $('#updateFieldsB').serialize());
+  }else if (!userB && userA) {
+    showUserinForm(userA);
+    $.post('/copyA/' + $('.nombre').val(), $('#updateFields').serialize(), function (data) {
+    alert(data);
+    });
+  } else if(userA && userB){
+    alert("Ya se encuentra en los dos")
+  }else{
+    alert("No está en ninguno de los dos")
+  }
 }

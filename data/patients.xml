@@ -1,52 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <patients>
-	<patient>
-		<name>John Doe</name>
-		<gender>Male</gender>
-		<ssn>123456</ssn>
-		<date_of_birth>03/05/1957</date_of_birth>
-		<address>1223 abc street</address>
-		<zip_code>12345</zip_code>
-		<city>New York City</city>
-		<state>New York</state>
-	</patient>
-	<patient>
-		<name>Sarah Smith</name>
-		<gender>Female</gender>
-		<ssn>111111</ssn>
-		<date_of_birth>05/12/1942</date_of_birth>
-		<address>23 palmetto dr</address>
-		<zip_code>13245</zip_code>
-		<city>Los Angeles</city>
-		<state>California</state>
-	</patient>
-	<patient>
-		<name>Brad Pitt</name>
-		<gender>Male</gender>
-		<ssn>854675</ssn>
-		<date_of_birth>08/23/1967</date_of_birth>
-		<address>879 d street</address>
-		<zip_code>56478</zip_code>
-		<city>Buffalo</city>
-		<state>New York</state>
-	</patient>
-	<patient>
-		<name>Diana Shell</name>
-		<gender>Female</gender>
-		<ssn>456548</ssn>
-		<date_of_birth>01/12/1976</date_of_birth>
-		<address>12 25th av</address>
-		<zip_code>47857</zip_code>
-		<city>Orlando</city>
-		<state>Florida</state>
-	</patient>
-		<patient>
-		<name>Ann Taylor</name>
-		<gender>Female</gender>
-		<ssn>244321</ssn>
-		<date_of_birth>12/12/1987</date_of_birth>
-		<address>233 clinton av</address>
-		<zip_code>77777</zip_code>
-		<city>Miami</city>
-		<state>Florida</state>
-	</patient>
+  <patient>
+    <name>John Doe</name>
+    <gender>Mal</gender>
+    <ssn>123456</ssn>
+    <date_of_birth>03/05/1957</date_of_birth>
+    <address>1223 abc street</address>
+    <zip_code>12345</zip_code>
+    <city>New York City</city>
+    <state>New York</state>
+  </patient>
+  <patient>
+    <name>Sarah Smith</name>
+    <gender>Female</gender>
+    <ssn>111111</ssn>
+    <date_of_birth>05/12/1942</date_of_birth>
+    <address>23 palmetto dr</address>
+    <zip_code>13245</zip_code>
+    <city>Los Angeles</city>
+    <state>California</state>
+  </patient>
+  <patient>
+    <name>Brad Pitt</name>
+    <gender>Male</gender>
+    <ssn>854675</ssn>
+    <date_of_birth>08/23/1967</date_of_birth>
+    <address>879 d street</address>
+    <zip_code>56478</zip_code>
+    <city>Buffalo</city>
+    <state>New York</state>
+  </patient>
+  <patient>
+    <name>Diana Shell</name>
+    <gender>Female</gender>
+    <ssn>456548</ssn>
+    <date_of_birth>01/12/1976</date_of_birth>
+    <address>12 25th av</address>
+    <zip_code>47857</zip_code>
+    <city>Orlando</city>
+    <state>Florida</state>
+  </patient>
+  <patient>
+    <name>Ann Taylor</name>
+    <gender>Female</gender>
+    <ssn>244321</ssn>
+    <date_of_birth>12/12/1987</date_of_birth>
+    <address>233 clinton av</address>
+    <zip_code>77777</zip_code>
+    <city>Miami</city>
+    <state>Florida</state>
+  </patient>
 </patients>

@@ -14,7 +14,13 @@
           <label for="exampleInputName2">Patient Name:</label>
           <input type="text" class="form-control nombre" id="exampleInputName2" placeholder="John Doe" value="John Doe">
       </div>
-      <form action="POST" class="hidden updateForm">
+      <div class="doctor hidden ">
+        <label for="doc">Doctor Name:</label>
+        <input type="text" class="form-control doctorName" placeholder="Eric Moore"  >
+        <br>
+        <input type="submit" value="Delete" class="btn btn-success borrarB">
+      </div>
+      <form action="POST" class="hidden updateFormA" id="updateFields">
         <div class="table-responsive">
           <table class="table ">
           <tr>
@@ -38,12 +44,36 @@
             <td><input type="text" class="form-control stateInput" name="stateInput" ></td>
           </tr>
           <tr>
-            <td colspan="8"><input type="submit" value="Save" class="btn btn-success save"></td>
+            <td colspan="8"><input type="submit" value="Save" class="btn btn-success updateA"></td>
           </tr>
           </table>
         </div>
       </form>
-    
+      <form action="POST" class="hidden updateFormB" id="updateFieldsB">
+        <div class="table-responsive">
+          <table class="table ">
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date of birth</th>
+            <th>Social Security</th>
+            <th>Address</th>
+            <th>Doctor</th>
+          </tr>
+          <tr>
+            <td><input type="text" class="form-control first_nameInput" name="first_nameInput" ></td>
+            <td><input type="text" class="form-control last_nameInput" name="last_nameInput" ></td>
+            <td><input type="text" class="form-control dobInput" name="dobInput" ></td>
+             <td><input type="text" class="form-control social_securityInput" name="social_securityInput" ></td>
+            <td><input type="text" class="form-control addressInput" name="addressInput" ></td>
+            <td><input type="text" class="form-control doctorInput" name="doctorInput" ></td>
+          </tr>
+          <tr>
+            <td colspan="8"><input type="submit" value="Save" class="btn btn-success updateB"></td>
+          </tr>
+          </table>
+        </div>
+      </form>
       <ul class="col-md-6 text-center">
         <li>
           <button type="submit" class="btn btn-info buscarA">Search in accounting</button>
@@ -66,13 +96,13 @@
           <button type="submit" class="btn btn-info buscarB">Search in appointments</button>
         </li>
         <li>
-          <button type="submit" class="btn btn-info copiarInfo">Copy Patient Info</button>
+          <button type="submit" class="btn btn-warning copiarInfo">Copy Patient Info</button>
         </li>
         <li>
           <button type="submit" class="btn btn-info comun">List in both</button>
         </li>
         <li>
-          <button type="submit" class="btn btn-info borrarB">Delete in appointments</button>
+          <button type="submit" class="btn btn-info inputDoctor">Delete in appointments</button>
         </li>
         <li>
           <button type="submit" class="btn btn-info actualizarCitas">Update a patient info in appointments</button>
