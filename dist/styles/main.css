@@ -1,12 +1,12 @@
-body{
-}
-
 h1,h3{
 	color: #31B0D5;
+
+}
+h1{
+	text-align: center;
 }
 ul{
 	list-style: none;
-
 }
 ul li{
 	margin: 15px 0;

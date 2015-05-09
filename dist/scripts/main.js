@@ -21,7 +21,6 @@ $.ajax({
   }
 });
 
-
 function schemaClear (){
   return{
     name: "",
@@ -48,10 +47,10 @@ function schemaA (val){
   }
 }
 
-
 function schemaB (val) {
   return {
     first_name : val.first_name,
+    middle_initial : val.middle_initial,
     last_name : val.last_name,
     name: val.first_name + " " + val.last_name,
     ssn: val.social_security,
@@ -88,32 +87,57 @@ function showUserInTable (user) {
   $('.zip_code').text(user.zip_code);
   $('.city').text(user.city);
   $('.state').text(user.state);
-  $('.tablePatients').removeClass('hidden');
 }
 
-function buscarAfn () {
+function showUserinForm (user) {
+    $('.nameInput').val(user.name);
+    $('.genderInput').val(user.gender);
+    $('.ssnInput').val(user.ssn);
+    $('.date_of_birthInput').val(user.dob);
+    $('.addressInput').val(user.address);
+    $('.zip_codeInput').val(user.zip_code);
+    $('.cityInput').val(user.city);
+    $('.stateInput').val(user.state);
+}
 
+function showUserBinForm (user) {
+
+  $('.first_nameInput').val(user.first_name);
+  $('.middle_initialInput').val(user.middle_initial);
+  $('.last_nameInput').val(user.last_name);
+  $('.dobInput').val(user.dob);
+  $('.social_securityInput').val(user.ssn);
+  $('.addressInput').val(user.address);
+}
+
+function searchA () {
+  $('.tablePatients').addClass('hidden');
   var user = foundUser(patientsA, $('.nombre').val(), schemaA);
   
   if (user) {
     showUserInTable(user);
+    $('.tablePatients').removeClass('hidden');
+    
   }else{
-    alert('La persona que busca no se encuentra en la lista de contabilidad')
+    alert('The patient you are looking for is not in the list of accounting')
   }
 }
 
-function buscarBfn () {
+function searchB () {
+  $('.tablePatients').addClass('hidden');
   var user = foundUser(patientsB, $('.nombre').val(), schemaB);
 
   if (user) {
     showUserInTable(user);
+    $('.tablePatients').removeClass('hidden');
+    
   }else{
-    alert('La persona que busca no se encuentra en la lista de citas')
+    alert('The patient you are looking for is not in the list of appointments')
     
   }
 }
 
-function comparar () {
+function comparefn () {
 
   var nombreA = '';
   var direccionA = '';
@@ -134,7 +158,6 @@ function comparar () {
       socialA = val.ssn;
     }
 
-    console.log(nombreA + " "+ fechaA+ " "+ socialA , typeof fechaA);
   });
 
   $.each(patientsB, function(index,val) {
@@ -145,19 +168,19 @@ function comparar () {
       fechaB = val.dob;
       socialB = val.social_security;
     }
-    console.log(nombreB + " "+ fechaB+ " "+ socialB , typeof fechaB);
   });
 
   if ($('.nombre').val().length === 0) {
     alert('Write a patient name')
   }else{
     if (nombreA == nombreB && fechaA.toString() == fechaB.toString() && socialB.toString() == socialA.toString()) {
-      alert('equals')
+      alert('Data are equals')
     }else{
-      alert('not equals')
+      alert('Data are not equals')
     }
   }
 }
+
 function recorrer (a,b) {
   $.each(patientsA, function(index,val) {
     a.push(val.name.toString());
@@ -167,7 +190,7 @@ function recorrer (a,b) {
   });
 }
 
-function comun () {
+function listComunfn () {
   $('.enComun').removeClass('hidden')
   $('.listaEnComun').text('')
   var patientsInA = [];
@@ -179,7 +202,7 @@ function comun () {
   }
 }
 
-function soloUno () {
+function listInOne () {
   var patientsInA = []
     , patientsInB = [];
 
@@ -200,66 +223,18 @@ function clearTable (argument) {
   showUserInTable(schemaClear());
 }
 
-
 function doctorInfo (argument) {
+
   $('.doctor').removeClass('hidden');
 }
 
-function borrarBfn (userToDelete, doctor) {
-
-  $.post('/deleteB/' + $('.nombre').val() + '/' + $('.doctorName').val() ,function (data) {
+function deleteBfn (userToDelete, doctor) {
+  $.post('/deleteB/' + $('.nombre').val() + '/' + $('.doctorName').find(":selected").text() ,function (data) {
     alert(data);
-  })
-}
-
-$(document).ready(function($) {
-  var $input = $(".nombre");
-  $('.tablePatients').addClass('hidden');
-  $('.enComun').addClass('hidden');
-  $('.diferente').addClass('hidden');
-
-  // Event listeners
-
-  // clean table every click
-  $('.buscarA, .buscarB').on('click', clearTable)
-
-  // actual listeners
-  $('.buscarA').on('click', buscarAfn);
-  $('.buscarB').on('click', buscarBfn);
-  $('.comparar').on('click', comparar);
-  $('.comun').on('click', comun);
-  $('.soloUno').on('click', soloUno);
-  $('.borrarA').on('click', borrarAfn);
-  $('.inputDoctor').on('click', doctorInfo);
-  $('.borrarB').on('click', borrarBfn);
-
-  $('.actualizarContabilidad').on('click', updateUserInA);
-  $('.actualizarCitas').on('click', updateUserInB);
-  $('.updateA').on('click', updateXml);
-  $('.updateB').on('click', updateXml2);
-  $('.copiarInfo').on('click', copiarfn);
-
-});
-function showUserinForm (user) {
-    $('.nameInput').val(user.name);
-    $('.genderInput').val(user.gender);
-    $('.ssnInput').val(user.ssn);
-    $('.date_of_birthInput').val(user.dob);
-    $('.addressInput').val(user.address);
-    $('.zip_codeInput').val(user.zip_code);
-    $('.cityInput').val(user.city);
-    $('.stateInput').val(user.state);
-  
-}
-
-function showUserBinForm (user) {
-
-    $('.first_nameInput').val(user.first_name);
-    $('.last_nameInput').val(user.last_name);
-    $('.dobInput').val(user.dob);
-    $('.social_securityInput').val(user.ssn);
-    $('.addressInput').val(user.address);
-  
+    
+    location.reload(true);
+    $('.doctor').addClass('hidden')
+  });
 }
 
 function updateUserInA () {
@@ -275,64 +250,77 @@ function updateUserInA () {
   }
 }
 
-
 function updateUserInB () {
   var user = foundUser(patientsB, $('.nombre').val(), schemaB);
   if (user) {
-
     $('.updateFormB').removeClass('hidden');
     showUserBinForm(user);
+    knowDoctor();
   }else{
-
    alert("This patient is not in the xml file");
-
   }
 }
 
-function borrarAfn (userToDelete) {
-  $.post('/delete/' + $('.nombre').val(), function (data) {
-    alert(data);
+function knowDoctor () {
+  $(".doctorSelect").change(function() {
+    var doc = $(".doctorSelect option:selected").text()
+    $('.doctorInput').val(doc);
   });
 }
+
+function deleteAfn (userToDelete) {
+  $.post('/delete/' + $('.nombre').val(), function (data) {
+    alert(data);
+    
+    location.reload(true);
+  });
+}
+
 function updateXml (event) {
   event.preventDefault();
-  console.log($('#updateFields').serialize());
+
   $.post('/updateA/' + $('.nombre').val(), $('#updateFields').serialize(), function (data) {
     alert(data);
   });
   $('.updateFormA').addClass('hidden');
-  $('.nombre').val('');
+  $('.nombre').val('')
   location.reload(true);
 }
+
 function updateXml2 (event) {
   event.preventDefault();
-  console.log($('#updateFieldsB').serialize());
+  
   $.post('/updateB/' + $('.nombre').val(), $('#updateFieldsB').serialize(), function (data) {
     alert(data);
   });
   $('.updateFormB').addClass('hidden');
-  $('.nombre').val('');
+  $('.nombre').val('')
   location.reload(true);
 }
 
+$(document).ready(function($) {
+  var $input = $(".nombre");
+  $('.tablePatients').addClass('hidden');
+  $('.enComun').addClass('hidden');
+  $('.diferente').addClass('hidden');
 
+  
+  // Event listeners
 
-function copiarfn () {
-  var userB = foundUser(patientsB, $('.nombre').val(), schemaB);
-  var userA = foundUser(patientsA, $('.nombre').val(), schemaA);
-  
-  
-  if (userB && !userA) {
-    showUserBinForm(userB);
-    $.post('/copyB/' + $('.nombre').val(), $('#updateFieldsB').serialize());
-  }else if (!userB && userA) {
-    showUserinForm(userA);
-    $.post('/copyA/' + $('.nombre').val(), $('#updateFields').serialize(), function (data) {
-    alert(data);
-    });
-  } else if(userA && userB){
-    alert("Ya se encuentra en los dos")
-  }else{
-    alert("No está en ninguno de los dos")
-  }
-}
+  // clean table every click
+  $('.buscarA, .buscarB').on('click', clearTable)
+
+  // actual listeners
+  $('.buscarA').on('click', searchA);
+  $('.buscarB').on('click', searchB);
+  $('.comparar').on('click', comparefn);
+  $('.comun').on('click', listComunfn);
+  $('.soloUno').on('click', listInOne);
+  $('.borrarA').on('click', deleteAfn);
+  $('.inputDoctor').on('click', doctorInfo);
+  $('.borrarB').on('click', deleteBfn);
+  $('.actualizarContabilidad').on('click', updateUserInA);
+  $('.actualizarCitas').on('click', updateUserInB);
+  $('.updateA').on('click', updateXml);
+  $('.updateB').on('click', updateXml2);
+});

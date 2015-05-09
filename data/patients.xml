@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <patients>
   <patient>
-    <name>John Doe</name>
-    <gender>Mal</gender>
-    <ssn>123456</ssn>
-    <date_of_birth>03/05/1957</date_of_birth>
-    <address>1223 abc street</address>
-    <zip_code>12345</zip_code>
-    <city>New York City</city>
-    <state>New York</state>
-  </patient>
-  <patient>
     <name>Sarah Smith</name>
     <gender>Female</gender>
     <ssn>111111</ssn>

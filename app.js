@@ -22,6 +22,7 @@ var bodyParser = require('body-parser')
 var isPatientAInXml = false;
 var isPatientBInXml = false;
 
+// patients functions
 function returnUsersA (user, patientsArray) {
 	var returnArray = [];
 	patientsArray.forEach(function (field) {
@@ -61,10 +62,6 @@ function editUsersA (user, patientsArray, name, gender, ssn, dob, address, zipCo
 	return returnArray;
 }
 
-function addBPatient (user, patientsArray, name, social_security, dob, address) {
-	console.log(patientsArray.hospital.physician[0]);
-}
-
 function deleteAFromXML (name, collection) {
 	var newPatients = returnUsersA(name, patientsA.patients.patient);
 
@@ -84,7 +81,8 @@ function updateAFromXML (name, collection, username, gender, ssn, dob, address, 
 	return builder.buildObject(collection);
 }
 
-function editUsersB (user, patientsArray, first_name, last, ssn, dob, address) {
+// patients2 functions
+function editUsersB (user, patientsArray, first_name, middle_initial , last, ssn, dob, address) {
 
 	var returnArray = [];
 	patientsArray.forEach(function (field) {
@@ -92,6 +90,7 @@ function editUsersB (user, patientsArray, first_name, last, ssn, dob, address) {
 		var temp = {}
 		if (userName == user) {
 			temp.first_name = [first_name];
+			temp.middle_initial = [middle_initial];
 			temp.last_name = [last];
 		 	temp.social_security = [ssn];
 		 	temp.dob = [dob];
@@ -121,26 +120,22 @@ function returnUsersB (user, patientsArray) {
 	return returnArray;
 }
 
-function updateBFromXML (name, collection, first_name, last_name, social_security, dob, address, doctor) {
+function updateBFromXML (name, collection, first_name, middle_initial ,last_name, social_security, dob, address, doctor) {
 	
 	if (doctor == collection.hospital.physician[0].name){
 		
-		var newPatients = editUsersB(name, patientsB.hospital.physician[0].patient,first_name, last_name, social_security, dob, address);
+		var newPatients = editUsersB(name, patientsB.hospital.physician[0].patient,first_name, middle_initial ,last_name, social_security, dob, address);
 		
 		delete collection.hospital.physician[0].patient
 		collection.hospital.physician[0].patient = newPatients;
 		return builder.buildObject(collection);
 	}else if(doctor == collection.hospital.physician[1].name){
-		var newPatients = editUsersB(name, patientsB.hospital.physician[1].patient,first_name, last_name, social_security, dob, address);
+		var newPatients = editUsersB(name, patientsB.hospital.physician[1].patient,first_name, middle_initial ,last_name, social_security, dob, address);
 		
 		delete collection.hospital.physician[1].patient
 		collection.hospital.physician[1].patient = newPatients;
 		return builder.buildObject(collection);
 	}
-}
-
-function copyBFromXML(name, collection, first_name, last_name, social_security, dob, address, doctor){
-	
 }
 
 function deleteBFromXML (name, collection, doctor) {
@@ -214,7 +209,6 @@ app.post('/deleteB/:user/:doctor', function(req, res){
 	// el nombre del usuario viene en los parametros
 	var user = req.params.user;
 	var doctor = req.params.doctor;
-	console.log(doctor);
 	var xml = deleteBFromXML(user, patientsB, doctor);
 	fs.writeFile(__dirname + "/data/patients2.xml", xml, function(err) {
 	    if(err) {
@@ -264,7 +258,9 @@ app.post('/updateB/:user', function (req, res) {
 	var	address = req.body.addressInput;
 	var	last_name = req.body.last_nameInput;
 	var doctor = req.body.doctorInput;
-	var xml = updateBFromXML(user, patientsB, first_name, last_name, social_security, dob, address, doctor);
+	var middle_initial = req.body.middle_initialInput;
+	console.log(doctor);
+	var xml = updateBFromXML(user, patientsB, first_name, middle_initial ,last_name, social_security, dob, address, doctor);
 	
 	fs.writeFile(__dirname + "/data/patients2.xml", xml, function(err) {
 	    if(err) {
@@ -272,26 +268,6 @@ app.post('/updateB/:user', function (req, res) {
 	    }
     	res.send("The patient " + user + " was successfully updated");
 	});
-	
-});
-
-app.post('/copyB/:user', function (req, res) {
-
-	var user = req.params.user;
-	var name = req.body.first_nameInput + " " + req.body.last_nameInput;
-	var	social_security = req.body.social_securityInput;
-	var	dob = req.body.dobInput;
-	var	address = req.body.addressInput;
-	var doctor = req.body.doctorInput;
-	addBPatient(user, patientsB, name, social_security, dob, address) ;
-	// var xml = copyBFromXML(user, patientsB, first_name, last_name, social_security, dob, address, doctor);
-	
-	// fs.writeFile(__dirname + "/data/patients2.xml", xml, function(err) {
-	//     if(err) {
-	//         return console.log(err);
-	//     }
- //    	res.send("The patient " + user + " was successfully copy");
-	// });
 	
 });
 

@@ -12,11 +12,14 @@
       <h1>Hospital ABC</h1>
       <div class="form-group">
           <label for="exampleInputName2">Patient Name:</label>
-          <input type="text" class="form-control nombre" id="exampleInputName2" placeholder="John Doe" value="John Doe">
+          <input type="text" class="form-control nombre" id="exampleInputName2" placeholder="For Example: John Doe">
       </div>
       <div class="doctor hidden ">
-        <label for="doc">Doctor Name:</label>
-        <input type="text" class="form-control doctorName" placeholder="Eric Moore"  >
+        <label for="doc">Which doctor will you want to remove the appointment?:</label>
+        <select class="form-control doctorName">
+          <option>Eric Moore</option>
+          <option>Ann Bloom</option>
+        </select>
         <br>
         <input type="submit" value="Delete" class="btn btn-success borrarB">
       </div>
@@ -54,6 +57,7 @@
           <table class="table ">
           <tr>
             <th>First Name</th>
+            <th>Middle Initial</th>
             <th>Last Name</th>
             <th>Date of birth</th>
             <th>Social Security</th>
@@ -62,11 +66,17 @@
           </tr>
           <tr>
             <td><input type="text" class="form-control first_nameInput" name="first_nameInput" ></td>
+            <td><input type="text" class="form-control middle_initialInput" name="middle_initialInput" ></td>
             <td><input type="text" class="form-control last_nameInput" name="last_nameInput" ></td>
             <td><input type="text" class="form-control dobInput" name="dobInput" ></td>
              <td><input type="text" class="form-control social_securityInput" name="social_securityInput" ></td>
             <td><input type="text" class="form-control addressInput" name="addressInput" ></td>
-            <td><input type="text" class="form-control doctorInput" name="doctorInput" ></td>
+            <input type="text" class="form-control doctorInput hidden" name="doctorInput" >
+            <td><select class="form-control doctorSelect">
+          <option class="doctorNameB"></option>
+          <option class="doctorNameB">Eric Moore</option>
+          <option class="doctorNameB">Ann Bloom</option>
+        </select></td>
           </tr>
           <tr>
             <td colspan="8"><input type="submit" value="Save" class="btn btn-success updateB"></td>
@@ -79,9 +89,6 @@
           <button type="submit" class="btn btn-info buscarA">Search in accounting</button>
         </li>
         <li>
-          <button type="submit" class="btn btn-info comparar">Compare</button>
-        </li>
-        <li>
           <button type="submit" class="btn btn-info soloUno">List in one</button>
         </li>
         <li>
@@ -90,13 +97,13 @@
         <li>
           <button type="submit" class="btn btn-info actualizarContabilidad">Update a patient info in accounting</button>
         </li>
+        <li>
+          <button type="submit" class="btn btn-info comparar">Compare</button>
+        </li>
       </ul>
       <ul class="col-md-6 text-center">
         <li>
           <button type="submit" class="btn btn-info buscarB">Search in appointments</button>
-        </li>
-        <li>
-          <button type="submit" class="btn btn-warning copiarInfo">Copy Patient Info</button>
         </li>
         <li>
           <button type="submit" class="btn btn-info comun">List in both</button>
